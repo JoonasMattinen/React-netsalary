@@ -1,4 +1,5 @@
 import './App.css';
+import Options from './components/Options';
 
 function App() {
   return (
@@ -16,19 +17,13 @@ function App() {
         <div>
           <label>Työeläke</label>
           <select>
-            <option>0.25%</option>
-            <option>0.50%</option>
-            <option>0.75%</option>
-            <option>1.00%</option>
+            <Options/>
           </select>
         </div>
         <div>
           <label>Työttömyysvakuutus</label>
           <select>
-            <option>0.25%</option>
-            <option>0.50%</option>
-            <option>0.75%</option>
-            <option>1.00%</option>
+            <Options/>
           </select>
         </div>
         <div>
