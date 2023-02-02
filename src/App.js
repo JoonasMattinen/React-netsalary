@@ -20,9 +20,24 @@ function App() {
     setTaxPayment(salary / 100 * value)
   }
 
+  function calculatePension(value){
+    setPension(value)
+    setPensionPayment(salary / 100 * value)
+  }
+
+  function calculateInsurance(value){
+    setInsurance(value)
+    setInsurancePayment(salary / 100 * value)
+  }
+
+  function handleSubmit(e){
+    e.preventDefault()
+    setNetSalary(salary - taxPayment - pensionPayment - insurancePayment)
+  }
+
   return (
     <div>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <h3>Laske nettopalkka</h3>
         <div>
           <label>Bruttopalkka</label>
@@ -35,21 +50,23 @@ function App() {
         </div>
         <div>
           <label>Työeläke</label>
-          <select>
+          <select value={pension} onChange={e => calculatePension(e.target.value)}>
             <Options/>
           </select>
+          <output>{pensionPayment}€</output>
         </div>
         <div>
           <label>Työttömyysvakuutus</label>
-          <select>
+          <select value={insurance} onChange={e => calculateInsurance(e.target.value)}>
             <Options/>
           </select>
+          <output>{insurancePayment}€</output>
         </div>
         <div>
-          <label>Nettopalkka</label>
-          <output></output>
+          <label>Nettopalkka </label>
+          <output>{netSalary}€</output>
         </div>
-        <button>Laske</button>
+        <button type='submit'>Laske</button>
       </form>
 
     </div>
